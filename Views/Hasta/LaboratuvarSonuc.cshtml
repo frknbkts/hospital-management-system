@@ -1,0 +1,13 @@
+﻿@* ... (diğer kodlar aynı kalacak) *@
+
+@foreach (var rapor in ViewBag.TibbiRaporlar)
+{
+    <div>
+        <h3>@rapor.TibbiRaporID</h3>
+
+        @* Laboratuvar sonucu resmini göster *@
+        <img src="@Url.Content("~/Image/" + rapor.RaporIcerigi)" alt="Laboratuvar Sonucu" />
+
+        <p>@rapor.RaporIcerigi</p>
+    </div>
+}

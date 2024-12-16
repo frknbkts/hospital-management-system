@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yapın</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="login-form" style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 400px; width: 100%; text-align: center;">
+            <h2 style="margin-bottom: 20px; color: #333;">Giriş Yapın</h2>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 20px;">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form action="@Url.Action("Login", "Home")" method="post">
+                <div class="form-group text-left">
+                    <label for="KullaniciAdi">Kullanıcı Adı:</label>
+                    <input type="text" class="form-control" id="KullaniciAdi" name="KullaniciAdi" required autofocus style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+                </div>
+                <div class="form-group text-left">
+                    <label for="Parola">Şifre:</label>
+                    <input type="password" class="form-control" id="Parola" name="Parola" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+                </div>
+                <div class="form-group form-check text-left">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="background-color: #007bff; border-color: #007bff; transition: background-color 0.3s;">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

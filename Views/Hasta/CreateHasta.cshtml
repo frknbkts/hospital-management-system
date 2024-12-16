@@ -1,0 +1,52 @@
+﻿@model prolabson.Models.Hastalar
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Hasta</h2>
+
+@using (Html.BeginForm("CreateHasta", "Hasta", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ad)
+        @Html.TextBoxFor(model => model.Ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Ad)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Soyad)
+        @Html.TextBoxFor(model => model.Soyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Soyad)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DogumTarihi)
+        @Html.EditorFor(model => model.DogumTarihi, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(model => model.DogumTarihi)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cinsiyet) @Html.TextBoxFor(model => model.Cinsiyet, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Cinsiyet)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TelefonNumarasi)
+        @Html.TextBoxFor(model => model.TelefonNumarasi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TelefonNumarasi)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adres)
+        @Html.TextBoxFor(model => model.Adres, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Adres)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

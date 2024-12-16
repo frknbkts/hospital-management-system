@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "TibbiRaporlar";
+}
+
+<h2>Raporlar</h2>
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("CreateTibbiRapor", "TibbiRapor")">
+                    <i class="fas fa-calendar-alt"></i>
+                    <br />
+                     Tıbbi Rapor Ekle
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a href="@Url.Action("DeleteTibbiRapor", "TibbiRapor")">
+                        <i class="fas fa-calendar-alt"></i>
+                        <br />
+                        Tıbbi Rapor Sil
+                    </a>
+                </div>
+            </div>
+        </div>

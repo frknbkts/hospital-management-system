@@ -1,0 +1,54 @@
+﻿@model prolabson.Models.Hastalar
+@{
+    ViewBag.Title = "Hasta Paneli";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Düzeninizi belirtin
+}
+
+<h2>Hasta Paneli</h2>
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("Randevular", "Randevu")">
+                    <i class="fas fa-calendar-alt"></i>
+                    <br />
+                    Randevular
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("CreateRandevu", "Randevu")">
+                    <i class="fas fa-calendar-plus"></i>
+                    <br />
+                    Randevu Al
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("ProfilHasta", "Hasta", new { id = Model.HastaID })">
+                    <i class="fas fa-user"></i>
+                    <br />
+                    Profil
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("LaboratuvarSonuc", "Hasta", new { id = Model.HastaID })">
+                    <i class="fas fa-flask"></i>
+                    <br />
+                    Laboratuvar Sonuç
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model prolabson.Models.Hastalar
+@{
+    ViewBag.Title = "ProfilHasta";
+}
+
+
+@{
+    ViewBag.Title = "Profil Güncelle";
+}
+
+<h2>Hasta Güncelle</h2>
+
+@using (Html.BeginForm("ProfilHasta", "Hasta"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.HastaID)
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ad)
+        @Html.EditorFor(m => m.Ad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Ad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Soyad)
+        @Html.EditorFor(m => m.Soyad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Soyad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DogumTarihi)
+        @Html.EditorFor(m => m.DogumTarihi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.DogumTarihi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cinsiyet)
+        @Html.EditorFor(m => m.Cinsiyet, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Cinsiyet, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TelefonNumarasi)
+        @Html.EditorFor(m => m.TelefonNumarasi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.TelefonNumarasi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Adres)
+        @Html.EditorFor(m => m.Adres, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Adres, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Güncelle" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "HastaPaneli", "Hasta")
+</div>
+
+
+

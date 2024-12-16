@@ -1,0 +1,51 @@
+﻿@model List<prolabson.Models.Hastalar>
+
+@{
+    ViewBag.Title = "Hasta Silme Onayı";
+}
+
+<h2>Hasta Silme Onayı</h2>
+
+@if (TempData["SilmeMesaji"] != null)
+{
+    <p class="alert alert-success">@TempData["SilmeMesaji"]</p>
+}
+
+@if (Model.Count > 0)
+{
+    <p>Silmek istediğiniz Hastalar:</p>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Adı</th>
+                <th>Soyadı</th>
+                <th>Uzmanlık Alanı</th>
+                <th>Çalıştığı Hastane</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Hasta in Model)
+            {
+                <tr>
+                    <td>@Hasta.Ad</td>
+                    <td>@Hasta.Soyad</td>
+                    <td>@Hasta.DogumTarihi</td>
+                    <td>@Hasta.Cinsiyet</td>
+                    <td>@Hasta.TelefonNumarasi</td>
+                    <td>@Hasta.Adres</td>
+                    <td>
+                        <form action="@Url.Action("DeleteHastaOnay", "Hasta", new { id = Hasta.HastaID })" method="post">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Silinecek Hasta bulunamadı.</p>
+}

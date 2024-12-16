@@ -1,0 +1,36 @@
+﻿@model List<prolabson.Models.TibbiRaporlar>
+
+@{
+    ViewBag.Title = "Delete Tibbi Rapor";
+}
+
+<h2>Delete Tibbi Rapor</h2>
+
+@if (TempData["SilmeMesaji"] != null)
+{
+    <div class="alert alert-success">@TempData["SilmeMesaji"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Rapor İçeriği</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TibbiRaporID</td>
+                <td>@item.RaporIcerigi</td>
+                <td>
+                    <form action="@Url.Action("DeleteTibbiRaporOnay", "TibbiRapor", new { id = item.TibbiRaporID })" method="post">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

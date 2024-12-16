@@ -1,0 +1,72 @@
+﻿@model IEnumerable<prolabson.Models.Hastalar>
+
+@{
+    ViewBag.Title = "Hasta Listesi";
+}
+
+<h2>Hasta Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Hasta Ekle", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DogumTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cinsiyet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonNumarasi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kullanicilar.KullaniciAdi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DogumTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cinsiyet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefonNumarasi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kullanicilar.KullaniciAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "UpdateHasta", new { id = item.HastaID }) |
+                    @Html.ActionLink("Detaylar", "Details", new { id = item.HastaID }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.HastaID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

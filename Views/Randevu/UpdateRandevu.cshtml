@@ -1,0 +1,37 @@
+﻿@model List<prolabson.Models.Randevular>
+
+@{
+    ViewBag.Title = "Randevu Güncelle";
+}
+
+<h2>Randevuları Güncelle</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Herhangi bir randevu bulunamadı.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Randevu ID</th>
+            <th>Randevu Tarihi</th>
+            <th>Hasta ID</th>
+            <th>Doktor ID</th>
+            <th></th>
+        </tr>
+        @foreach (var randevu in Model)
+        {
+            <tr>
+                <td>@randevu.RandevuID</td>
+                <td>@(randevu.RandevuTarihi.HasValue ? randevu.RandevuTarihi.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                <td>@(randevu.HastaID.HasValue ? randevu.HastaID.ToString() : "-")</td>
+                <td>@(randevu.DoktorID.HasValue ? randevu.DoktorID.ToString() : "-")</td>
+                <td>
+                    <a href="@Url.Action("RandevuDetay", "Randevu", new { id = randevu.RandevuID })" class="btn btn-info">Detay</a>
+                    <a href="@Url.Action("RandevuGuncelle", "Randevu", new { id = randevu.RandevuID })" class="btn btn-primary">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<prolabson.Models.Doktorlar>
+
+@{
+    ViewBag.Title = "Doktor Listesi";
+}
+
+<h2>Doktor Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Doktor Ekle", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UzmanlikAlani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalistigiHastane)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kullanicilar.KullaniciAdi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UzmanlikAlani)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CalistigiHastane)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kullanicilar.KullaniciAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "UpdateDoktor", new { id = item.DoktorID }) |
+                    @Html.ActionLink("Detaylar", "Details", new { id = item.DoktorID }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.DoktorID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

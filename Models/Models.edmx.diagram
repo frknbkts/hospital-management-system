@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40cecd42cbc94c6e8f344a69d8610c5b" Name="Diagram1">
+        <EntityTypeShape EntityType="prolabsonModel.Doktorlar" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="prolabsonModel.Hastalar" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prolabsonModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prolabsonModel.Randevular" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prolabsonModel.Yonetici" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="prolabsonModel.FK__Doktorlar__Dokto__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="prolabsonModel.FK__Randevula__Dokto__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="prolabsonModel.FK__Hastalar__HastaI__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="prolabsonModel.FK__Randevula__Hasta__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="prolabsonModel.FK__Yonetici__Yoneti__4316F928" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="prolabsonModel.TibbiRaporlar" Width="1.5" PointX="5.25" PointY="2.375" />
+        <AssociationConnector Association="prolabsonModel.FK__TibbiRapo__Dokto__76969D2E" />
+        <AssociationConnector Association="prolabsonModel.FK__TibbiRapo__Hasta__75A278F5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

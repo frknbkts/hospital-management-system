@@ -1,0 +1,47 @@
+﻿@model prolabson.Models.Doktorlar
+@{
+    ViewBag.Title = "Hasta Paneli";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Düzeninizi belirtin
+}
+
+<h2>Doktor Paneli</h2>
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="@Url.Action("Randevular", "Randevu")">
+                    <i class="fas fa-calendar-alt"></i>
+                    <br />
+                    Randevular
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a href="@Url.Action("ProfilDoktor", "Doktor", new { id = Model.DoktorID })">
+                        <i class="fas fa-calendar-alt"></i>
+                        <br />
+                        Profil
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <a href="@Url.Action("TibbiRaporlar", "TibbiRapor")">
+                            <i class="fas fa-calendar-alt"></i>
+                            <br />
+                            TibbiRaporlar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

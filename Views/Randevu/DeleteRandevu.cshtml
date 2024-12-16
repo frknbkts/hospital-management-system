@@ -1,0 +1,50 @@
+﻿@model List<prolabson.Models.Randevular>
+
+@{
+    ViewBag.Title = "Randevu Sil";
+}
+
+<h2>Randevuları Sil</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Herhangi bir randevu bulunamadı.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Randevu ID</th>
+            <th>Randevu Tarihi</th>
+            <th>Hasta ID</th>
+            <th>Doktor ID</th>
+            <th></th>
+        </tr>
+        @foreach (var randevu in Model)
+        {
+            <tr>
+                <td>@randevu.RandevuID</td>
+                <td>@(randevu.RandevuTarihi.HasValue ? randevu.RandevuTarihi.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                <td>@(randevu.HastaID.HasValue ? randevu.HastaID.ToString() : "-")</td>
+                <td>@(randevu.DoktorID.HasValue ? randevu.DoktorID.ToString() : "-")</td>
+                <td>
+                    <form action="@Url.Action("DeleteRandevuOnay", "Randevu")" method="post" onsubmit="return confirm('Bu randevuyu silmek istediğinizden emin misiniz?');">
+                        @Html.Hidden("id", randevu.RandevuID)
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<script>
+    // Silme işleminden sonra yönlendirme
+    window.onload = function() {
+        var message = "@TempData["SilmeMesaji"]";
+        if (message !== "") {
+            alert(message);
+            window.location.href = "@Url.Action("Randevular", "Randevu")";
+        }
+    };
+</script>

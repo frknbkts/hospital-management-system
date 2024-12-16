@@ -1,0 +1,25 @@
+﻿@model prolabson.Models.TibbiRaporlar
+@{
+    ViewBag.Title = "CreateTibbiRapor";
+}
+
+<h2>CreateTibbiRapor</h2>
+<br />
+<br />
+@using (Html.BeginForm("CreateTibbiRapor", "TibbiRapor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <p>RaporGorseli</p>
+    <input type="file" name="RaporIcerigi" />
+    <input type="text" name="HastaAdi" />
+    <input type="submit" value="kaydet" />
+
+
+
+    <div>
+        @Html.ActionLink("Listeye Geri Dön", "DoktorPaneli", "Doktor")
+    </div>
+
+
+}
+

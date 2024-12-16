@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="prolabsonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Doktorlar">
+    <Key>
+      <PropertyRef Name="DoktorID" />
+    </Key>
+    <Property Name="DoktorID" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="UzmanlikAlani" Type="nvarchar" MaxLength="50" />
+    <Property Name="CalistigiHastane" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Hastalar">
+    <Key>
+      <PropertyRef Name="HastaID" />
+    </Key>
+    <Property Name="HastaID" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="DogumTarihi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cinsiyet" Type="nvarchar" MaxLength="10" />
+    <Property Name="TelefonNumarasi" Type="varchar" MaxLength="15" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+    <Property Name="Parola" Type="varchar" MaxLength="255" />
+    <Property Name="KullaniciTipi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Randevular">
+    <Key>
+      <PropertyRef Name="RandevuID" />
+    </Key>
+    <Property Name="RandevuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RandevuTarihi" Type="datetime" />
+    <Property Name="HastaID" Type="int" />
+    <Property Name="DoktorID" Type="int" />
+  </EntityType>
+  <EntityType Name="TibbiRaporlar">
+    <Key>
+      <PropertyRef Name="TibbiRaporID" />
+    </Key>
+    <Property Name="TibbiRaporID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaporIcerigi" Type="nvarchar(max)" />
+    <Property Name="HastaID" Type="int" />
+    <Property Name="DoktorID" Type="int" />
+  </EntityType>
+  <EntityType Name="Yonetici">
+    <Key>
+      <PropertyRef Name="YoneticiID" />
+    </Key>
+    <Property Name="YoneticiID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Doktorlar__Dokto__403A8C7D">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Doktorlar" Type="Self.Doktorlar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Doktorlar">
+        <PropertyRef Name="DoktorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Hastalar__HastaI__3D5E1FD2">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Hastalar" Type="Self.Hastalar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Hastalar">
+        <PropertyRef Name="HastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Randevula__Dokto__693CA210">
+    <End Role="Doktorlar" Type="Self.Doktorlar" Multiplicity="0..1" />
+    <End Role="Randevular" Type="Self.Randevular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doktorlar">
+        <PropertyRef Name="DoktorID" />
+      </Principal>
+      <Dependent Role="Randevular">
+        <PropertyRef Name="DoktorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Randevula__Hasta__68487DD7">
+    <End Role="Hastalar" Type="Self.Hastalar" Multiplicity="0..1" />
+    <End Role="Randevular" Type="Self.Randevular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hastalar">
+        <PropertyRef Name="HastaID" />
+      </Principal>
+      <Dependent Role="Randevular">
+        <PropertyRef Name="HastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TibbiRapo__Dokto__76969D2E">
+    <End Role="Doktorlar" Type="Self.Doktorlar" Multiplicity="0..1" />
+    <End Role="TibbiRaporlar" Type="Self.TibbiRaporlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doktorlar">
+        <PropertyRef Name="DoktorID" />
+      </Principal>
+      <Dependent Role="TibbiRaporlar">
+        <PropertyRef Name="DoktorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TibbiRapo__Hasta__75A278F5">
+    <End Role="Hastalar" Type="Self.Hastalar" Multiplicity="0..1" />
+    <End Role="TibbiRaporlar" Type="Self.TibbiRaporlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hastalar">
+        <PropertyRef Name="HastaID" />
+      </Principal>
+      <Dependent Role="TibbiRaporlar">
+        <PropertyRef Name="HastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Yonetici__Yoneti__4316F928">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Yonetici">
+        <PropertyRef Name="YoneticiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="prolabsonModelStoreContainer">
+    <EntitySet Name="Doktorlar" EntityType="Self.Doktorlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hastalar" EntityType="Self.Hastalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Randevular" EntityType="Self.Randevular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TibbiRaporlar" EntityType="Self.TibbiRaporlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yonetici" EntityType="Self.Yonetici" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Doktorlar__Dokto__403A8C7D" Association="Self.FK__Doktorlar__Dokto__403A8C7D">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Doktorlar" EntitySet="Doktorlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Hastalar__HastaI__3D5E1FD2" Association="Self.FK__Hastalar__HastaI__3D5E1FD2">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Hastalar" EntitySet="Hastalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Randevula__Dokto__693CA210" Association="Self.FK__Randevula__Dokto__693CA210">
+      <End Role="Doktorlar" EntitySet="Doktorlar" />
+      <End Role="Randevular" EntitySet="Randevular" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Randevula__Hasta__68487DD7" Association="Self.FK__Randevula__Hasta__68487DD7">
+      <End Role="Hastalar" EntitySet="Hastalar" />
+      <End Role="Randevular" EntitySet="Randevular" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TibbiRapo__Dokto__76969D2E" Association="Self.FK__TibbiRapo__Dokto__76969D2E">
+      <End Role="Doktorlar" EntitySet="Doktorlar" />
+      <End Role="TibbiRaporlar" EntitySet="TibbiRaporlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TibbiRapo__Hasta__75A278F5" Association="Self.FK__TibbiRapo__Hasta__75A278F5">
+      <End Role="Hastalar" EntitySet="Hastalar" />
+      <End Role="TibbiRaporlar" EntitySet="TibbiRaporlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Yonetici__Yoneti__4316F928" Association="Self.FK__Yonetici__Yoneti__4316F928">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Yonetici" EntitySet="Yonetici" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

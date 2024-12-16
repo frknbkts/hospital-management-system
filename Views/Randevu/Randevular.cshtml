@@ -1,0 +1,39 @@
+﻿@model List<prolabson.Models.Randevular>
+
+@{
+    ViewBag.Title = "Randevular";
+}
+
+<h2>Randevular</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].RandevuTarihi)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Hastalar.Ad)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Doktorlar.Ad)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RandevuTarihi</td>
+                <td>@item.Hastalar.Ad</td>
+                <td>@item.Doktorlar.Ad</td>
+
+
+                <td></td>
+            </tr>
+            <p>
+                @Html.ActionLink("Düzenle", "UpdateRandevu", new { id = item.RandevuID }) |
+                @Html.ActionLink("Sil", "DeleteRandevu", new { id = item.RandevuID }) |
+                @Html.ActionLink("Geri Dön", "HastaPaneli", "Hasta")
+
+            </p>
+
+        }
+
+    </tbody>
+</table>
+

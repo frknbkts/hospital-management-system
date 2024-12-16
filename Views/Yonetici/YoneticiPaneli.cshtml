@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Yönetici Paneli";
+}
+
+<h2>Yönetici Paneli</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Hasta İşlemleri
+            </div>
+            <div class="card-body">
+                <a href="@Url.Action("CreateHasta", "Hasta")" class="btn btn-primary">Hasta Ekle</a>
+                <a href="@Url.Action("UpdateHasta", "Hasta")" class="btn btn-warning">Hasta Duzenle</a>
+                <a href="@Url.Action("DeleteHasta", "Hasta")" class="btn btn-danger">Hasta Sil</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Doktor İşlemleri
+            </div>
+            <div class="card-body">
+                <a href="@Url.Action("CreateDoktor", "Doktor")" class="btn btn-primary">Doktor Ekle</a>
+                <a href="@Url.Action("UpdateDoktor", "Doktor")" class="btn btn-warning">Doktor Duzenle</a>
+                <a href="@Url.Action("DeleteDoktor", "Doktor")" class="btn btn-danger">Doktor Sil</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Randevu İşlemleri
+            </div>
+            <div class="card-body">
+                <a href="@Url.Action("DeleteRandevu", "Randevu")" class="btn btn-danger">Randevu Sil</a>
+                <a href="@Url.Action("UpdateRandevu", "Randevu")" class="btn btn-primary">Randevu Duzenle</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model prolabson.Models.Doktorlar
+
+@{
+    ViewBag.Title = "Doktor Güncelle";
+}
+
+<h2>Doktor Güncelle</h2>
+
+@using (Html.BeginForm("UpdateDoktorOnay", "Doktor"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoktorID, "Doktor Seçiniz:")
+        @Html.DropDownListFor(m => m.DoktorID, (IEnumerable<SelectListItem>)ViewBag.Doktorlar, "Doktor Seçiniz", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ad)
+        @Html.EditorFor(m => m.Ad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Ad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Soyad)
+        @Html.EditorFor(m => m.Soyad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Soyad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UzmanlikAlani)
+        @Html.EditorFor(m => m.UzmanlikAlani, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.UzmanlikAlani, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Güncelle" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "YoneticiPaneli", "Yonetici")
+</div>
